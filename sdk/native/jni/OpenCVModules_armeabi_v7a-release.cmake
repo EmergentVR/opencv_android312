@@ -49,7 +49,7 @@ list(APPEND _IMPORT_CHECK_FILES_FOR_libjasper "${_IMPORT_PREFIX}/sdk/native/3rdp
 # Import target "libpng" for configuration "Release"
 set_property(TARGET libpng APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(libpng PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "ASM;C"
   IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "z"
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/sdk/native/3rdparty/libs/armeabi-v7a/liblibpng.a"
   )
@@ -232,6 +232,17 @@ set_target_properties(opencv_calib3d PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS opencv_calib3d )
 list(APPEND _IMPORT_CHECK_FILES_FOR_opencv_calib3d "${_IMPORT_PREFIX}/sdk/native/libs/armeabi-v7a/libopencv_calib3d.a" )
+
+# Import target "opencv_java" for configuration "Release"
+set_property(TARGET opencv_java APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(opencv_java PROPERTIES
+  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "dl;m;log;jnigraphics"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/sdk/native/libs/armeabi-v7a/libopencv_java3.so"
+  IMPORTED_SONAME_RELEASE "libopencv_java3.so"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS opencv_java )
+list(APPEND _IMPORT_CHECK_FILES_FOR_opencv_java "${_IMPORT_PREFIX}/sdk/native/libs/armeabi-v7a/libopencv_java3.so" )
 
 # Import target "opencv_stitching" for configuration "Release"
 set_property(TARGET opencv_stitching APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
